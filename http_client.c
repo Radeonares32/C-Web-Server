@@ -8,5 +8,16 @@
 #include <arpa/inet.h>
 
 int main(int argc, char *argv){
+    char *address;
+    address = argv[1];
     
+    int client_socket;
+    client_socket = socket(AF_INET,SOCK_STREAM,0);
+
+    //connect to an address
+
+    struct sockaddr_in remote_address;
+    remote_address.sin_family = AF_INET;
+    remote_address.sin_port = htons(80);
+    inet_aton(address,&remote_address.sin_addr.s_addr);
 }
