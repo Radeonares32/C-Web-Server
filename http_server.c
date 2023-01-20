@@ -32,5 +32,11 @@ int main()
 
     listen(server_socket,5);
 
+    int client_socket;
+    while(1) {
+        client_socket = accept(server_socket,NULL,NULL);
+        send(client_socket,http_header,sizeof(http_header),0);
+        close(client_socket);
+    }
     return 0;
 }
